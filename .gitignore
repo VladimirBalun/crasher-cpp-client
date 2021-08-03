@@ -1,5 +1,7 @@
 .idea/*
 
+protobuf/*
+
 bin/*
 build/*
 cmake-build-debug/*

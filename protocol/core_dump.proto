@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package protocol;
+
+import "app_info.proto";
+import "os_info.proto";
+
+enum DumpType
+{
+    UNKNOWN = 0;
+    UNHANDLED_EXCEPTION = 1;
+    OUT_OF_MEMORY = 2;
+    SIGNAL_ABORT = 3;
+    SIGNAL_SEGMENTATION_VIOLATION = 4;
+}
+
+message CoreDump
+{
+    string data = 1;
+    OSInfo os_info = 2;
+    AppInfo app_info = 3;
+    int64 timestamp = 4;
+    string extensions = 5;
+    DumpType type = 6;
+}
