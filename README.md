@@ -10,8 +10,6 @@ implementation C++ client for Crasher dump/crash server.
 In order to build the library, you will need
 the following installed packages on your machine:
 
-  - **cmake**
-  - **protobuf**
   - **boost**
 
 After that you can use the following commands:
