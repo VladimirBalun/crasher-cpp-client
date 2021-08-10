@@ -4,8 +4,8 @@
 #include <string>
 #include <chrono>
 
-#include "os_info.h"
-#include "app_info.h"
+#include "os_info.hpp"
+#include "app_info.hpp"
 
 namespace Crashser
 {

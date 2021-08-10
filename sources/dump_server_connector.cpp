@@ -1,7 +1,7 @@
-#include "dump_server_connector.h"
+#include "dump_server_connector.hpp"
 
-#include "core_dump.h"
-#include "json_serializer.h"
+#include "core_dump.hpp"
+#include "json_serializer.hpp"
 
 Crashser::DumpServerConnector::DumpServerConnector(std::string host, std::string port)
     : m_ioc{}, m_resolver{m_ioc}, m_stream{m_ioc}

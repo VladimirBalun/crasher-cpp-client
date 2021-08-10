@@ -38,7 +38,7 @@ endif()
 
 if(BUILD_EXAMPLES)
     include_directories(${PROJECT_INCLUDE_DIR})
-    set(EXAMPLES sigsegv_handling_example)
+    set(EXAMPLES sigsegv_handling_example exception_handling_example)
     foreach(EXAMPLE ${EXAMPLES})
         add_executable(${EXAMPLE} examples/${EXAMPLE}.cpp)
         target_link_libraries(${EXAMPLE} ${Boost_LIBRARIES} ${PROJECT_NAME})

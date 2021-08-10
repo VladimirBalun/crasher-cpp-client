@@ -1,6 +1,6 @@
-#include "json_serializer.h"
+#include "json_serializer.hpp"
 
-#include "core_dump.h"
+#include "core_dump.hpp"
 
 #define PUT_IN_JSON_IF_EXISTS(json, key, value) \
     do { if(!value.empty()) json.put(key, value); } while(false)
@@ -26,17 +26,21 @@ std::string Crashser::JSONSerializer::serialize(const CoreDump& core_dump)
 boost::property_tree::ptree Crashser::JSONSerializer::serialize(const OSInfo* os_info)
 {
     boost::property_tree::ptree os_info_json{};
-    PUT_IN_JSON_IF_EXISTS(os_info_json, "name", os_info->getName());
-    PUT_IN_JSON_IF_EXISTS(os_info_json, "architecture", os_info->getArchitecture());
-    PUT_IN_JSON_IF_EXISTS(os_info_json, "version", os_info->getVersion());
+    if (os_info) {
+        PUT_IN_JSON_IF_EXISTS(os_info_json, "name", os_info->getName());
+        PUT_IN_JSON_IF_EXISTS(os_info_json, "architecture", os_info->getArchitecture());
+        PUT_IN_JSON_IF_EXISTS(os_info_json, "version", os_info->getVersion());
+    }
     return os_info_json;
 }
 
 boost::property_tree::ptree Crashser::JSONSerializer::serialize(const AppInfo* app_info)
 {
     boost::property_tree::ptree app_info_json{};
-    PUT_IN_JSON_IF_EXISTS(app_info_json, "name", app_info->getName());
-    PUT_IN_JSON_IF_EXISTS(app_info_json, "version", app_info->getVersion());
-    PUT_IN_JSON_IF_EXISTS(app_info_json, "programming_language", app_info->getProgrammingLanguage());
+    if (app_info) {
+        PUT_IN_JSON_IF_EXISTS(app_info_json, "name", app_info->getName());
+        PUT_IN_JSON_IF_EXISTS(app_info_json, "version", app_info->getVersion());
+        PUT_IN_JSON_IF_EXISTS(app_info_json, "programming_language", app_info->getProgrammingLanguage());
+    }
     return app_info_json;
 }
